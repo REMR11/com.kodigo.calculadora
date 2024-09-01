@@ -1,0 +1,18 @@
+package org.kodigo2024;
+
+public class Potencia extends Operacion{
+
+    public Potencia(String nombre) {
+        super(nombre);
+    }
+
+    /**
+     * @param num1
+     * @param num2
+     * @return
+     */
+    @Override
+    public double realisarOperacion(Numero num1, Numero num2) {
+        return Math.pow(num1.getValor(), num2.getValor());
+    }
+}
