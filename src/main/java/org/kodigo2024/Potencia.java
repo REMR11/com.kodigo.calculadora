@@ -2,8 +2,8 @@ package org.kodigo2024;
 
 public class Potencia extends Operacion{
 
-    public Potencia(String nombre) {
-        super(nombre);
+    public Potencia() {
+        super("Potencia");
     }
 
     /**

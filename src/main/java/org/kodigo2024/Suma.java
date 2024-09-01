@@ -2,7 +2,7 @@ package org.kodigo2024;
 
 public class Suma extends Operacion{
 
-    public Suma(String nombre) {
+    public Suma() {
         super("Suma");
     }
 

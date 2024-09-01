@@ -1,7 +1,7 @@
 package org.kodigo2024;
 
 public class Division extends  Operacion{
-    public Division(String nombre) {
+    public Division() {
         super("Division");
     }
 

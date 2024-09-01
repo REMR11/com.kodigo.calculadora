@@ -2,7 +2,7 @@ package org.kodigo2024;
 
 public class Resta extends  Operacion{
 
-    public Resta(String nombre) {
+    public Resta() {
         super("Resta");
     }
 

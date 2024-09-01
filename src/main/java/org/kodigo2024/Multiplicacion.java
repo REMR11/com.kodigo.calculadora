@@ -1,7 +1,7 @@
 package org.kodigo2024;
 
 public class Multiplicacion extends  Operacion{
-    public Multiplicacion(String nombre) {
+    public Multiplicacion() {
         super("Multiplicacion");
     }
 
