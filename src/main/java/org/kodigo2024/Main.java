@@ -1,22 +1,48 @@
+/**
+ * Clase principal que ejecuta una calculadora básica que permite al usuario realizar
+ * operaciones matemáticas simples, como suma, resta, multiplicación, división, potencia
+ * y raíz cuadrada.
+ *
+ * El programa presenta un menú al usuario con las opciones disponibles y le pide que
+ * seleccione una de ellas. Luego, pide los números necesarios para realizar la operación
+ * seleccionada y muestra el resultado.
+ *
+ * @author Ronald Mejia
+ */
 package org.kodigo2024;
 
-import java.util.InputMismatchException;
-import java.util.Random;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+/**
+ * Clase principal que ejecuta el programa de operaciones matemáticas.
+ *
+ * @author Ronald Mejia
+ */
 public class Main {
+    /**
+     * Mapa que asocia cada opción con la operación correspondiente.
+     */
+    private static final Map<Integer, Operacion> operaciones = new HashMap<>();
+
+    static {
+        operaciones.put(1, new Suma());
+        operaciones.put(2, new Resta());
+        operaciones.put(3, new Multiplicacion());
+        operaciones.put(4, new Division());
+        operaciones.put(5, new Potencia());
+        operaciones.put(6, new RaizCuadrada());
+    }
+
+    /**
+     * Método principal que ejecuta el programa.
+     *
+     * @param args Argumentos de la línea de comandos.
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int opcion = 0;
-        // Crear operaciones
-        Operacion suma = new Suma();
-        Operacion resta = new Resta();
-        Operacion multiplicacion = new Multiplicacion();
-        Operacion division = new Division();
-        Operacion potencia = new Potencia();
-        Operacion raizCuadrada = new RaizCuadrada();
+        int opcion;
 
         while (true) {
             System.out.println("Menú de Operaciones");
@@ -28,68 +54,86 @@ public class Main {
             System.out.println("6. Raíz Cuadrada");
             System.out.println("7. Salir");
 
-            opcion = Validaciones.solicitarIntValido(scanner);
-            Numero num1 = null;
-            Numero num2 = num1;
-            switch (opcion) {
-                case 1:
-                    // Crear calculadora con operación suma
-                    Calculadora calculadoraSuma = new Calculadora(suma);
-                    num1 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    num2 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    double resultadoSuma = calculadoraSuma.relizaOperacion(num1, num2);
-                    System.out.println("Resultado de la suma: " + resultadoSuma);
-                    break;
-                case 2:
-                    // Crear calculadora con operación resta
-                    Calculadora calculadoraResta = new Calculadora(resta);
-                    num1 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    num2 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    double resultadoResta = calculadoraResta.relizaOperacion(num1, num2);
-                    System.out.println("Resultado de la resta: " + resultadoResta);
-
-                    break;
-                case 3:
-                    // Crear calculadora con operación multiplicación
-                    Calculadora calculadoraMultiplicacion = new Calculadora(multiplicacion);
-                    num1 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    num2 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    double resultadoMultiplicacion = calculadoraMultiplicacion.relizaOperacion(num1, num2);
-                    System.out.println("Resultado de la multiplicación: " + resultadoMultiplicacion);
-                    break;
-                case 4:
-                    // Crear calculadora con operación división
-                    Calculadora calculadoraDivision = new Calculadora(division);
-                    num1 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    num2 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    double resultadoDivision = calculadoraDivision.relizaOperacion(num1, num2);
-                    System.out.println("Resultado de la división: " + resultadoDivision);
-                    break;
-                case 5:
-                    // Crear calculadora con operación potencia
-                    Calculadora calculadoraPotencia = new Calculadora(potencia);
-                    num1 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    num2 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    double resultadoPotencia = calculadoraPotencia.relizaOperacion(num1, num2);
-                    System.out.println("Resultado de la potencia: " + resultadoPotencia);
-                    break;
-                case 6:
-                    // Crear calculadora con operación raíz cuadrada
-                    Calculadora calculadoraRaizCuadrada = new Calculadora(raizCuadrada);
-                    num1 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    num2 = new Numero(Validaciones.pedirDoublePositivo(scanner));
-                    double resultadoRaizCuadrada = calculadoraRaizCuadrada.relizaOperacion(num1, new Numero(1.0));
-                    System.out.println("Resultado de la raíz cuadrada: " + resultadoRaizCuadrada);
-                    break;
-                case 7:
-                    System.out.println("Adiós!");
-                    return;
-                default:
-                    System.out.println("Opción inválida. Intente nuevamente.");
+            try {
+                opcion = Validaciones.solicitarIntValido(scanner);
+            } catch (Exception e) {
+                System.out.println("Error al leer la opción. Intente nuevamente.");
+                continue;
             }
+
+            if (opcion == 7) {
+                System.out.println("Adiós!");
+                return;
+            }
+
+            realizarOperacion(opcion, scanner);
         }
     }
 
+    /**
+     * Realiza la operación seleccionada por el usuario.
+     *
+     * @param opcion  Opción seleccionada por el usuario.
+     * @param scanner Scanner para leer los datos de entrada.
+     */
+    private static void realizarOperacion(int opcion, Scanner scanner) {
+        Operacion operacion = operaciones.get(opcion);
 
+        if (operacion == null) {
+            System.out.println("Opción inválida. Intente nuevamente.");
+            return;
+        }
+
+        Numero num1 = null;
+        Numero num2 = null;
+
+        try {
+            num1 = new Numero(Validaciones.pedirDoublePositivo(scanner));
+            if (opcion != 6) {
+                num2 = new Numero(Validaciones.pedirDoublePositivo(scanner));
+            } else {
+                num2 = new Numero(1.0);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al leer los números. Intente nuevamente.");
+            return;
+        }
+
+        Calculadora calculadora = new Calculadora(operacion);
+        double resultado;
+
+        try {
+            resultado = calculadora.relizaOperacion(num1, num2);
+        } catch (Exception e) {
+            System.out.println("Error al realizar la operación. Intente nuevamente.");
+            return;
+        }
+
+        System.out.println("Resultado de la " + getNombreOperacion(opcion) + ": " + resultado);
+    }
+
+    /**
+     * Obtiene el nombre de la operación correspondiente a la opción seleccionada.
+     *
+     * @param opcion Opción seleccionada por el usuario.
+     * @return Nombre de la operación.
+     */
+    private static String getNombreOperacion(int opcion) {
+        switch (opcion) {
+            case 1:
+                return "suma";
+            case 2:
+                return "resta";
+            case 3:
+                return "multiplicación";
+            case 4:
+                return "división";
+            case 5:
+                return "potencia";
+            case 6:
+                return "raíz cuadrada";
+            default:
+                return "";
+        }
+    }
 }
-
