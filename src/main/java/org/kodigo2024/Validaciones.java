@@ -3,6 +3,15 @@ package org.kodigo2024;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Clase que proporciona métodos para realizar validaciones de entrada de usuario.
+ * Los métodos de esta clase se encargan de solicitar al usuario que ingrese valores
+ * numéricos válidos y de validar la entrada para asegurarse de que se cumplan las
+ * condiciones específicas.
+ *
+ * @author Ronald Mejia
+ */
+
 public class Validaciones {
     /**
      * Metodo encargado de validar si el numero ingresado cumple como un entero y no

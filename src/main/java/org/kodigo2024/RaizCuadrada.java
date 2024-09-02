@@ -1,14 +1,26 @@
 package org.kodigo2024;
 
+/**
+ * Clase que representa la operación de raíz cuadrada. Esta clase hereda de la clase abstracta
+ * Operacion y proporciona una implementación para la operación de raíz cuadrada.
+ *
+ * @author Ronald Mejia
+ */
 public class RaizCuadrada extends Operacion {
+
+    /**
+     * Constructor que inicializa la operación de raíz cuadrada con su nombre.
+     */
     public RaizCuadrada() {
         super("Raíz Cuadrada");
     }
 
     /**
-     * @param num1
-     * @param num2
-     * @return
+     * Realiza la operación de raíz cuadrada sobre un número.
+     *
+     * @param num1 el número sobre el que se realiza la raíz cuadrada
+     * @param num2 no se utiliza en esta operación
+     * @return el resultado de la raíz cuadrada
      */
     @Override
     public double realisarOperacion(Numero num1, Numero num2) {

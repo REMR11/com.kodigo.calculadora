@@ -1,3 +1,9 @@
+package org.kodigo2024;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
 /**
  * Clase principal que ejecuta una calculadora básica que permite al usuario realizar
  * operaciones matemáticas simples, como suma, resta, multiplicación, división, potencia
@@ -6,17 +12,6 @@
  * El programa presenta un menú al usuario con las opciones disponibles y le pide que
  * seleccione una de ellas. Luego, pide los números necesarios para realizar la operación
  * seleccionada y muestra el resultado.
- *
- * @author Ronald Mejia
- */
-package org.kodigo2024;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-
-/**
- * Clase principal que ejecuta el programa de operaciones matemáticas.
  *
  * @author Ronald Mejia
  */
