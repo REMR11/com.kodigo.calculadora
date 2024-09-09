@@ -25,7 +25,7 @@ public class RaizCuadrada extends Operacion {
      * @exception  ArithmeticException Si ingresas un valor negativo o Cero.
      */
     @Override
-    public double realisarOperacion(Numero num1, Numero num2) {
+    public double realizarOperacion(Numero num1, Numero num2) {
         try {
             if (num1.getValor() < 0) {
                 throw new ArithmeticException("No se puede calcular la raíz cuadrada de un número negativo");

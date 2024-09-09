@@ -23,7 +23,7 @@ public class Division extends Operacion {
      * @throws ArithmeticException si se intenta dividir por cero
      */
     @Override
-    public double realisarOperacion(Numero num1, Numero num2) {
+    public double realizarOperacion(Numero num1, Numero num2) {
         if (num2.getValor() == 0) {
             throw new ArithmeticException("No se puede dividir por cero");
         }

@@ -15,7 +15,7 @@ public class Numero {
 
     /**
      * Constructor que acepta String como parametro
-     * @param valor
+     * @param valor que simboliza un numero real
      */
     public Numero(String valor) {
         this.valor = Double.parseDouble(valor);

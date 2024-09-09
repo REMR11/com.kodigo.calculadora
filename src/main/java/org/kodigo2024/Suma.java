@@ -25,7 +25,7 @@ public class Suma extends Operacion {
      * @exception RuntimeException Si ocurre un error al realizar la suma
      */
     @Override
-    public double realisarOperacion(Numero num1, Numero num2) {
+    public double realizarOperacion(Numero num1, Numero num2) {
         try {
             return num1.getValor() + num2.getValor();
         } catch (Exception e) {

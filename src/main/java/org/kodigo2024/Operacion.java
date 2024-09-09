@@ -55,5 +55,5 @@ public abstract class Operacion {
      * @param num2 el segundo número
      * @return el resultado de la operación
      */
-    public abstract double realisarOperacion(Numero num1, Numero num2);
+    public abstract double realizarOperacion(Numero num1, Numero num2);
 }

@@ -16,8 +16,10 @@ public class Validaciones {
     /**
      * Metodo encargado de validar si el numero ingresado cumple como un entero y no
      * avanzara hasta obtener un numero valido.
-     * @param scanner
+     * @param scanner que es utilizado para obtener informacion de consola
      * @return int numero valido
+     *
+     * @exception InputMismatchException Si ingresas cualquier caracter que no sea un digito.
      */
     public static int solicitarIntValido (Scanner scanner) {
         int number = 0;
@@ -43,7 +45,10 @@ public class Validaciones {
     /**
      * Solicita al usuario que ingrese un valor doble positivo y valida la entrada.
      *
+     * @param scanner que es utilizado para obtener informacion de consola
      * @return un valor doble positivo válido
+     *
+     * @exception InputMismatchException Si ingresas cuelquier caracter que no sea un digito.
      */
     public static double pedirDoublePositivo(Scanner scanner) {
         double valor = 0;

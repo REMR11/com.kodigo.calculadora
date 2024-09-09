@@ -25,7 +25,7 @@ public class Potencia extends Operacion {
      * @exception ArithmeticException Si ingresas un parametro negativo o un cero.
      */
     @Override
-    public double realisarOperacion(Numero num1, Numero num2) {
+    public double realizarOperacion(Numero num1, Numero num2) {
         try {
             return Math.pow(num1.getValor(), num2.getValor());
         } catch (ArithmeticException e) {

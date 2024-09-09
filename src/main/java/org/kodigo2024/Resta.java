@@ -25,7 +25,7 @@ public class Resta extends Operacion {
      * @exception  RuntimeException Si ocurreo un error inesperado al realizar la resta
      */
     @Override
-    public double realisarOperacion(Numero num1, Numero num2) {
+    public double realizarOperacion(Numero num1, Numero num2) {
         try {
             return num1.getValor() - num2.getValor();
         } catch (Exception e) {

@@ -33,7 +33,7 @@ public class Calculadora {
      */
     public double relizaOperacion(Numero num1, Numero num2){
         try {
-            return operacion.realisarOperacion(num1, num2);
+            return operacion.realizarOperacion(num1, num2);
         } catch (Exception e) {
             throw new RuntimeException("Error al realizar la operación", e);
         }
