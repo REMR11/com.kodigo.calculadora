@@ -28,8 +28,14 @@ public class Calculadora {
      * @param num1 el primer número
      * @param num2 el segundo número
      * @return el resultado de la operación
+     *
+     * @exception  RuntimeException Si ocurre un error al realizar la operacion.
      */
     public double relizaOperacion(Numero num1, Numero num2){
-        return operacion.realisarOperacion(num1, num2);
+        try {
+            return operacion.realisarOperacion(num1, num2);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al realizar la operación", e);
+        }
     }
 }

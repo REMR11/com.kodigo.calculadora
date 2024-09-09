@@ -14,11 +14,23 @@ public class Numero {
     private double valor;
 
     /**
+     * Constructor que acepta String como parametro
+     * @param valor
+     */
+    public Numero(String valor) {
+        this.valor = Double.parseDouble(valor);
+    }
+
+    /**
      * Constructor que inicializa el número con su valor.
      *
      * @param valor el valor del número
+     * @exception  IllegalArgumentException si ingresas un valor invalido
      */
     public Numero(double valor) {
+        if (Double.isNaN(valor) || Double.isInfinite(valor)) {
+            throw new IllegalArgumentException("El valor no es un número válido");
+        }
         this.valor = valor;
     }
 
@@ -35,8 +47,12 @@ public class Numero {
      * Establece el valor del número.
      *
      * @param valor el nuevo valor del número
+     * @exception IllegalArgumentException si ingresas un valor invalido
      */
     public void setValor(double valor) {
+        if (Double.isNaN(valor) || Double.isInfinite(valor)) {
+            throw new IllegalArgumentException("El valor no es un número válido");
+        }
         this.valor = valor;
     }
 }

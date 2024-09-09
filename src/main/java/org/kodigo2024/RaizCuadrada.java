@@ -21,9 +21,18 @@ public class RaizCuadrada extends Operacion {
      * @param num1 el número sobre el que se realiza la raíz cuadrada
      * @param num2 no se utiliza en esta operación
      * @return el resultado de la raíz cuadrada
+     *
+     * @exception  ArithmeticException Si ingresas un valor negativo o Cero.
      */
     @Override
     public double realisarOperacion(Numero num1, Numero num2) {
-        return Math.sqrt(num1.getValor());
+        try {
+            if (num1.getValor() < 0) {
+                throw new ArithmeticException("No se puede calcular la raíz cuadrada de un número negativo");
+            }
+            return Math.sqrt(num1.getValor());
+        } catch (ArithmeticException e) {
+            throw new RuntimeException("Error al realizar la raíz cuadrada", e);
+        }
     }
 }

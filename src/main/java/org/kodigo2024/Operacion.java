@@ -19,8 +19,13 @@ public abstract class Operacion {
      * Constructor que inicializa la operación con su nombre.
      *
      * @param nombre el nombre de la operación
+     * @exception IllegalArgumentException si intentas ingresar un valor nulo
      */
+
     public Operacion(String nombre) {
+        if (nombre == null || nombre.isEmpty()) {
+            throw new IllegalArgumentException("El nombre de la operación no puede ser null o vacío");
+        }
         this.nombre = nombre;
     }
 

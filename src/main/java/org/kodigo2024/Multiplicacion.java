@@ -21,9 +21,15 @@ public class Multiplicacion extends Operacion {
      * @param num1 el primer número
      * @param num2 el segundo número
      * @return el resultado de la multiplicación
+     *
+     * @exception  RuntimeException Si ocurre un error al realizar la multiplicacion,
      */
     @Override
     public double realisarOperacion(Numero num1, Numero num2) {
-        return num1.getValor() * num2.getValor();
+        try {
+            return num1.getValor() * num2.getValor();
+        } catch (Exception e) {
+            throw new RuntimeException("Error al realizar la multiplicación", e);
+        }
     }
 }
