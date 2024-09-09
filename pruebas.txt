@@ -1,0 +1,136 @@
+
+-------------------------------------------------CASOS DE PRUEBA CALCULADORA-------------------------------------------------
+** Operación ** | **Entrada** | **Salida** | **Descripción**
+Suma|new Suma(), num1 = 2, num2 = 3 | 5 | Suma de dos números positivos
+Resta|new Resta(), num1 = 5, num2 = 2 | 3 | Resta de dos números positivos
+Multiplicar|new Multiplicar(), num1 = 4, num2 = 5 | 20 | Multiplicación de dos números positivosOperación|Entrada|Salida|Descripción
+Suma|new Suma(), num1 = 2, num2 = 3 | 5 | Suma de dos números positivos
+Resta|new Resta(), num1 = 5, num2 = 2| 3 | Resta de dos números positivos
+Multiplicar|new Multiplicar(), num1 = 4, num2 = 5 |20 | Multiplicación de dos números positivos
+-------------------------------------------------CASOS DE PRUEBA CALCULADORA-------------------------------------------------
+
+-------------------------------------------------CASOS DE PRUEBA OPERACION-------------------------------------------------
+Constructor
+=========================================================================================================
+Constructor | Entrada | Salida
+nombre | “Suma” | Operación con nombre "Suma"
+nombre | “Resta” | Operación con nombre "Resta"
+nombre | “Multiplicación” | Operación con nombre "Multiplicación"
+nombre | "División" | Operación con nombre "División"
+
+Método “IrealizarOperacion”:
+=========================================================================================================
+Método IrealizarOperacion | Entrada | Salida
+num1 = 2, num2 = 3 | Operacion con nombre "Suma" | resultado = 5
+num1 = 5, num2 = 2 | Operacion con nombre "Resta" | resultado = 3
+num1 = 4, num2 = 5 | Operacion con nombre "Multiplicación" | resultado = 20
+num1 = 12, num2 = 3 | Operacion con nombre "División" | resultado = 4
+num1 = 15, num2 = 0 | Operacion con nombre "División" | ArithmeticException (no se puede dividir por cero)
+-------------------------------------------------CASOS DE PRUEBA OPERACION-------------------------------------------------
+
+-------------------------------------------------CASOS DE PRUEBA NUMERO-------------------------------------------------
+**Caso de prueba** | **Entrada** | **Salida esperada** | **Descripción**
+1 | new Numero("10.5") | getValor() devuelve 10.5 | Crear objeto Numero con valor válido
+2 | new Numero(Double.MAX_VALUE) | getValor() devuelve Double.MAX_VALUE | Crear objeto Numero con valor válido máximo
+3 | new Numero("abc") | Lanza IllegalArgumentException con mensaje "El valor no es un número válido" | Crear objeto Numero con valor inválido (no numérico)
+4 | Numero num = new Numero(5.0); num.setValor(10.0); | getValor() devuelve 10.0 | Asignar valor válido a objeto Numero existente
+5 | new Numero(Double.NaN) | Lanza IllegalArgumentException con mensaje "El valor no es un número válido" | Crear objeto Numero con valor inválido (NaN)
+6 | new Numero(Double.POSITIVE_INFINITY) | Lanza IllegalArgumentException con mensaje "El valor no es un número válido" | Crear objeto Numero con valor inválido (infinito)
+7 | Numero num = new Numero(5.0); num.setValor(Double.NEGATIVE_INFINITY); | Lanza IllegalArgumentException con mensaje "El valor no es un número válido" | Asignar valor inválido (infinito) a objeto Numero existente
+-------------------------------------------------CASOS DE PRUEBA NUMERO-------------------------------------------------
+
+-------------------------------------------------CASOS DE PRUEBA SUMA-------------------------------------------------
+**Caso de prueba** | **Entrada** | **Salida esperada** | **Descripción**
+1 | Suma suma = new Suma(); suma.realizarOperacion(new Numero("5.0"), new Numero("3.0")) | 8.0 | Realizar suma con números positivos
+2 | Suma suma = new Suma(); suma.realizarOperacion(new Numero("-5.0"), new Numero("3.0")) | -2.0 | Realizar suma con números con signo diferente
+3 | Suma suma = new Suma(); suma.realizarOperacion(new Numero("5.0"), new Numero("-3.0")) | 2.0 | Realizar suma con números con signo diferente
+4 | Suma suma = new Suma(); suma.realizarOperacion(new Numero("0.0"), new Numero("0.0")) | 0.0 | Realizar suma con números cero
+5 | Suma suma = new Suma(); suma.realizarOperacion(new Numero("Double.MAX_VALUE"), new Numero("1.0")) | Lanza RuntimeException con mensaje "Error al realizar la suma" | Realizar suma con número máximo y otro número
+6 | Suma suma = new Suma(); suma.realizarOperacion(new Numero("Double.NaN"), new Numero("1.0")) | Lanza RuntimeException con mensaje "Error al realizar la suma" | Realizar suma con número NaN y otro número
+7 | Suma suma = new Suma(); suma.realizarOperacion(new Numero("Double.POSITIVE_INFINITY"), new Numero("1.0")) | Lanza RuntimeException con mensaje "Error al realizar la suma" | Realizar suma con número infinito y otro número
+-------------------------------------------------CASOS DE PRUEBA SUMA-------------------------------------------------
+
+-------------------------------------------------CASOS DE PRUEBA RESTA-------------------------------------------------
+**Caso de prueba** | **Entrada** | **Salida esperada** | **Descripción**
+1 | new Resta().realizarOperacion(new Numero(5.0), new Numero(3.0)) | 2.0 | Resta de dos números positivos
+2 | new Resta().realizarOperacion(new Numero(-5.0), new Numero(-3.0)) | -2.0 | Resta de dos números negativos
+3 | new Resta().realizarOperacion(new Numero(5.0), new Numero(-3.0)) | 8.0 | Resta de un número positivo y un número negativo
+4 | new Resta().realizarOperacion(new Numero(Double.MAX_VALUE), new Numero(Double.MAX_VALUE)) | 0.0 (o un valor muy pequeño) | Resta de dos números con valores máximos
+5 | new Resta().realizarOperacion(new Numero(5.0), new Numero(Double.NaN)) | NaN | Resta de un número y NaN
+6 | new Resta().realizarOperacion(new Numero(5.0), new Numero(Double.POSITIVE_INFINITY)) | -Infinity | Resta de un número y Infinity
+7 | new Resta().realizarOperacion(null, null) | NullPointerException o RuntimeException | Resta de dos objetos Numero nulos
+8 | new Resta().realizarOperacion(new Numero(5.0), null) | NullPointerException o RuntimeException | Resta de un objeto Numero nulo y un objeto Numero no nulo
+-------------------------------------------------CASOS DE PRUEBA RESTA-------------------------------------------------
+
+-------------------------------------------------CASOS DE PRUEBA Multiplicacion-------------------------------------------------
+**Caso de prueba** | **Entrada** | **Salida esperada** | **Descripción**
+1 | new Multiplicacion().realizarOperacion(new Numero(5.0), new Numero(3.0)) | 15.0 | Multiplicación de dos números positivos
+2 | new Multiplicacion().realizarOperacion(new Numero(-5.0), new Numero(-3.0)) | 15.0 | Multiplicación de dos números negativos
+3 | new Multiplicacion().realizarOperacion(new Numero(5.0), new Numero(-3.0)) | -15.0 | Multiplicación de un número positivo y un número negativo
+4 | new Multiplicacion().realizarOperacion(new Numero(Double.MAX_VALUE), new Numero(2.0)) | Infinity | Multiplicación de un número con valor máximo y un número finito
+5 | new Multiplicacion().realizarOperacion(new Numero(5.0), new Numero(Double.NaN)) | NaN | Multiplicación de un número y NaN
+6 | new Multiplicacion().realizarOperacion(new Numero(5.0), new Numero(Double.POSITIVE_INFINITY)) | Infinity | Multiplicación de un número y Infinity
+7 | new Multiplicacion().realizarOperacion(null, null) | NullPointerException o RuntimeException | Multiplicación de dos objetos Numero nulos
+8 | new Multiplicacion().realizarOperacion(new Numero(5.0), null) | NullPointerException o RuntimeException | Multiplicación de un objeto Numero nulo y un objeto Numero no nulo
+9 | new Multiplicacion().realizarOperacion(new Numero(0.0), new Numero(5.0)) | 0.0 | Multiplicación de cero y un número finito
+10 | new Multiplicacion().realizarOperacion(new Numero(1.0), new Numero(5.0)) | 5.0 | Multiplicación de uno y un número finito
+-------------------------------------------------CASOS DE PRUEBA Multiplicacion-------------------------------------------------
+
+-------------------------------------------------CASOS DE PRUEBA DIVISION-------------------------------------------------
+**Caso de prueba** | **Entrada** | **Salida esperada** | **Descripción**
+1 | new Division().realizarOperacion(new Numero(10.0), new Numero(2.0)) | 5.0 | División de dos números positivos
+2 | new Division().realizarOperacion(new Numero(-10.0), new Numero(-2.0)) | 5.0 | División de dos números negativos
+3 | new Division().realizarOperacion(new Numero(10.0), new Numero(-2.0)) | -5.0 | División de un número positivo y un número negativo
+4 | new Division().realizarOperacion(new Numero(10.0), new Numero(0.0)) | ArithmeticException: No se puede dividir por cero | División de un número por cero
+5 | new Division().realizarOperacion(new Numero(10.0), new Numero(Double.POSITIVE_INFINITY)) | 0.0 | División de un número por Infinity
+6 | new Division().realizarOperacion(new Numero(10.0), new Numero(Double.NaN)) | NaN | División de un número por NaN
+7 | new Division().realizarOperacion(new Numero(0.0), new Numero(10.0)) | 0.0 | División de cero por un número finito
+8 | new Division().realizarOperacion(new Numero(1.0), new Numero(10.0)) | 0.1 | División de uno por un número finito
+9 | new Division().realizarOperacion(null, null) | NullPointerException o RuntimeException | División de dos objetos Numero nulos
+10 | new Division().realizarOperacion(new Numero(10.0), null) | NullPointerException o RuntimeException | División de un objeto Numero nulo y un objeto Numero no nulo
+-------------------------------------------------CASOS DE PRUEBA DIVISION-------------------------------------------------
+
+-------------------------------------------------CASOS DE PRUEBA POTENCIA-------------------------------------------------
+**Caso de prueba** | **Entrada** | **Salida esperada** | **Descripción**
+1 | new Potencia().realizarOperacion(new Numero(2.0), new Numero(3.0)) | 8.0 | Potencia de un número positivo con un exponente positivo
+2 | new Potencia().realizarOperacion(new Numero(-2.0), new Numero(3.0)) | -8.0 | Potencia de un número negativo con un exponente positivo
+3 | new Potencia().realizarOperacion(new Numero(2.0), new Numero(-3.0)) | 0.125 | Potencia de un número positivo con un exponente negativo
+4 | new Potencia().realizarOperacion(new Numero(0.0), new Numero(3.0)) | 0.0 | Potencia de un número cero con un exponente positivo
+5 | new Potencia().realizarOperacion(new Numero(0.0), new Numero(-3.0)) | Infinity | Potencia de un número cero con un exponente negativo
+6 | new Potencia().realizarOperacion(new Numero(2.0), new Numero(Double.NaN)) | NaN | Potencia de un número con un exponente NaN
+7 | new Potencia().realizarOperacion(new Numero(2.0), new Numero(Double.POSITIVE_INFINITY)) | Infinity | Potencia de un número con un exponente Infinity
+8 | new Potencia().realizarOperacion(null, new Numero(3.0)) | NullPointerException o RuntimeException | Potencia de un número nulo con un exponente
+9 | new Potencia().realizarOperacion(new Numero(2.0), null) | NullPointerException o RuntimeException | Potencia de un número con un exponente nulo
+10 | new Potencia().realizarOperacion(null, null) | NullPointerException o RuntimeException | Potencia de dos números nulos
+-------------------------------------------------CASOS DE PRUEBA POTENCIA-------------------------------------------------
+
+-------------------------------------------------CASOS DE PRUEBA RAIZ CUADRADA-------------------------------------------------
+**Caso de prueba** | **Entrada** | **Salida esperada** | **Descripción**
+1 | new RaizCuadrada().realizarOperacion(new Numero(16.0), new Numero(0.0)) | 4.0 | Raíz cuadrada de un número positivo
+2 | new RaizCuadrada().realizarOperacion(new Numero(0.0), new Numero(0.0)) | 0.0 | Raíz cuadrada de un número cero
+3 | new RaizCuadrada().realizarOperacion(new Numero(-16.0), new Numero(0.0)) | ArithmeticException | Raíz cuadrada de un número negativo
+4 | new RaizCuadrada().realizarOperacion(null, new Numero(0.0)) | NullPointerException | Raíz cuadrada con un número nulo
+5 | new RaizCuadrada().realizarOperacion(new Numero(16.0), null) | NullPointerException | Raíz cuadrada con un exponente nulo
+6 | new RaizCuadrada().realizarOperacion(new Numero(Double.NaN), new Numero(0.0)) | NaN | Raíz cuadrada de un número NaN
+7 | new RaizCuadrada().realizarOperacion(new Numero(Double.POSITIVE_INFINITY), new Numero(0.0)) | Infinity | Raíz cuadrada de un número Infinity
+-------------------------------------------------CASOS DE PRUEBA RAIZ CUADRADA-------------------------------------------------
+
+-------------------------------------------------CASOS DE PRUEBA VALIDACIONES-------------------------------------------------
+**Método solicitarIntValido**
+================================
+**Caso de prueba** | **Entrada** | **Salida esperada** | **Descripción**
+| 1 | 42 | 42 | Número entero positivo |
+| 2 | -10 | El número debe ser positivo. | Número entero negativo |
+| 3 | abc | Entrada no válida. Por favor ingrese un número decimal válido. | Caracter no numérico |
+| 4 | 0 | El número debe ser positivo. | Número entero cero |
+| 5 | 123 | 123 | Número entero positivo grande |
+
+**Método pedirDoublePositivo**
+================================
+**Caso de prueba** | **Entrada** | **Salida esperada** | **Descripción**
+| 1 | 3.14 | 3.14 | Número doble positivo |
+| 2 | -0.5 | Debe ser un número positivo. | Número doble negativo |
+| 3 | abc | Debe ser un número decimal válido. | Caracter no numérico |
+| 4 | 0.0 | Debe ser un número positivo. | Número doble cero |
+| 5 | 123.45 | 123.45 | Número doble positivo grande |
+-------------------------------------------------CASOS DE PRUEBA VALIDACIONES-------------------------------------------------
